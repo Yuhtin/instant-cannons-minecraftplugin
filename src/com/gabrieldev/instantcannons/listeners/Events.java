@@ -35,6 +35,8 @@ public class Events extends Methods implements Listener {
 
         if(event.getAction().equals(Action.RIGHT_CLICK_AIR)){
 
+            if(!player.getItemInHand().getType().equals(Material.SKULL_ITEM) && !player.getItemInHand().hasItemMeta())return;
+
             if(fac.getName().equals(mp.getFaction().getName())
                     || fac.getName().equals(FactionColl.get().getNone().getName())){
 
