@@ -1,0 +1,45 @@
+# gaInstantCannons
+# Crie quantos canhões quiser!
+# OBS: Para evitar bugs, crie e copie a schematic olhando para o norte.
+
+Canhoes:
+  Canhao1:
+    Name: '&aCanhão Instantâneo'
+    Skull: 'http://textures.minecraft.net/texture/3af59776f2f03412c7b5947a63a0cf283d51fe65ac6df7f2f882e08344565e9'
+    Lore:
+      - ''
+      - ' &8Nível: &f1'
+      - ''
+    Schematic: 'canhao1.schematic'
+    msgPosicionado: '&aVocê posiciou o canhão &f1'
+  Canhao2:
+    Name: '&aCanhão Instantâneo'
+    Skull: 'http://textures.minecraft.net/texture/128c520ed3a57c218b96e9785c4a7f1f091d231dd7a95fea0224baed4a3f22b2'
+    Lore:
+      - ''
+      - ' &8Nível: &f2'
+      - ''
+    Schematic: 'canhao2.schematic'
+    msgPosicionado: '&aVocê posiciou o canhão &f2'
+  Canhao3:
+    Name: '&aCanhão Instantâneo'
+    Skull: 'http://textures.minecraft.net/texture/baae2b691b9a9577c35e4d885443bec9573e7c7c3d4619c8f9c7ee9e5021'
+    Lore:
+      - ''
+      - ' &8Nível: &f3'
+      - ''
+    Schematic: 'canhao3.schematic'
+    msgPosicionado: '&aVocê posiciou o canhão &f3'
+  Avancado:
+    Name: '&aCanhão Instantâneo'
+    Skull: 'http://textures.minecraft.net/texture/baae2b691b9a9577c35e4d885443bec9573e7c7c3d4619c8f9c7ee9e5021'
+    Lore:
+      - ''
+      - ' &8Nível: &fAvançado'
+      - ''
+    Schematic: 'canhaoavancado.schematic'
+    msgPosicionado: '&aVocê posiciou o canhão Avançado!'
+
+Mensagens:
+  noZone: '&cVocê só pode posicionar um canhão em terrenos de sua facção!'
+  noPermission: '&cVocê não tem permissão para utilizar este comando!'

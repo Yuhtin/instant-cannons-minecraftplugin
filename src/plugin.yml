@@ -1,0 +1,10 @@
+name: gaInstaCannons
+version: 1.0
+main: com.gabrieldev.instantcannons.Main
+author: Gabrielbs
+description: Sistema de canhões instantâneos geradores a partir de um item customizado.
+commands:
+  givecanhao:
+    description: Giva o item para o jogador alvo.
+    permission: gbcanhoes.givecanhao
+    permission-message: §cVocê não tem permissão para utilizar este comando.
