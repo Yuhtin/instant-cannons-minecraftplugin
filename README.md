@@ -1,2 +1,2 @@
-# instant-cannons-minecraftplugin
+# gaInstantCannons
 Instantly generate cannons from custom heads.
