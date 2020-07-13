@@ -21,6 +21,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class Events extends Methods implements Listener {
 
+    ItemStack canhao;
+
     @EventHandler
     void event(PlayerInteractEvent event){
 
@@ -33,26 +35,29 @@ public class Events extends Methods implements Listener {
 
         FileConfiguration config = Main.getInstance().getConfig();
 
-        if(event.getAction().equals(Action.RIGHT_CLICK_AIR)){
-
-            if(!player.getItemInHand().getType().equals(Material.SKULL_ITEM) && !player.getItemInHand().hasItemMeta())return;
+        if(event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
 
             if(fac.getName().equals(mp.getFaction().getName())
                     || fac.getName().equals(FactionColl.get().getNone().getName())){
 
-                for(String section : config.getConfigurationSection("Canhoes").getKeys(false)){
+                if(player.getItemInHand().getType().equals(Material.SKULL_ITEM) && player.getItemInHand().hasItemMeta()){
 
-                    ItemStack canhao = ItemComposer.of(config.getString("Canhoes." + section + ".Skull"))
-                            .setName(config.getString("Canhoes." + section + ".Name"))
-                            .setLore(config.getStringList("Canhoes." + section + ".Lore"))
-                            .setNBTTag("gbCanhão", section)
-                            .toItemStack();
+                    for(String section : config.getConfigurationSection("Canhoes").getKeys(false)){
 
-                    if(item.isSimilar(canhao)){
+                        canhao = ItemComposer.of(config.getString("Canhoes." + section + ".Skull"))
+                                .setName(config.getString("Canhoes." + section + ".Name"))
+                                .setLore(config.getStringList("Canhoes." + section + ".Lore"))
+                                .setNBTTag("gbCanhão", section)
+                                .toItemStack();
 
-                        player.sendMessage(config.getString("Canhoes." + section + ".msgPosicionado").replace("&", "§"));
-                        loadSchematic(player.getLocation(), config.getString("Canhoes." + section + ".Schematic"), player);
-                        removeItem(player, 1);
+                        if(item.isSimilar(canhao) && ItemComposer.getNBTTag(player.getItemInHand()
+                                , "gbCanhão").equals(section)){
+
+                            player.sendMessage(config.getString("Canhoes." + section + ".msgPosicionado").replace("&", "§"));
+                            loadSchematic(player.getLocation(), config.getString("Canhoes." + section + ".Schematic"), player);
+                            removeItem(player, 1);
+
+                        }
 
                     }
 
@@ -73,7 +78,7 @@ public class Events extends Methods implements Listener {
 
         Block blockPlaced = e.getBlockPlaced();
 
-        if(!blockPlaced.getType().equals(Material.SKULL_ITEM) && !e.getItemInHand().hasItemMeta())return;
+        if(!blockPlaced.getType().equals(Material.SKULL_ITEM) && !e.getItemInHand().getItemMeta().getDisplayName().equals(canhao.getItemMeta().getDisplayName()))return;
 
         e.setCancelled(true);
 
